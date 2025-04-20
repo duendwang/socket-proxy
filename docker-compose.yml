@@ -2,6 +2,12 @@ services:
   socket-proxy:
     image: tecnativa/docker-socket-proxy
     restart: unless-stopped
+    user: ${PUID:-1000}:${PGID:-1000}
+    security_opt:
+      - "no-new-privileges:true"
+    cap-drop:
+      - SETUID
+      - SETGID
     ports:
       - 2375:2375
     environment:
