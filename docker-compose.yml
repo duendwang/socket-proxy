@@ -1,7 +1,6 @@
 services:
   socket-proxy:
     image: lscr.io/linuxserver/socket-proxy:latest
-    container_name: socket-proxy
     security_opt:
       - "no-new-privileges:true"
     expose:
@@ -43,7 +42,10 @@ services:
     tmpfs:
       - /run
     networks:
-      - socket-proxy
+      socket-proxy:
+      wireguard:
+        aliases:
+          - Arcadia-AWS-Small-Socket
   wireguard:
     image: lscr.io/linuxserver/wireguard:latest
     security_opt:
@@ -81,5 +83,3 @@ networks:
     ipam:
       config:
         - subnet: ${NETWORK_SUBNET:-10.13.13.0}/24
-  wireguard:
-    name: wireguard
