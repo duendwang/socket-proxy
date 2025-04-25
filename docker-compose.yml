@@ -83,4 +83,4 @@ networks:
     name: wireguard
     ipam:
       config:
-        - subnet: ${NETWORK_SUBNET:-10.13.13.0}/24
+        - subnet: ${NETWORK_SUBNET:-10.13.13}.0/24
