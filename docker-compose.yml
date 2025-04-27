@@ -45,7 +45,7 @@ services:
       socket-proxy:
       wireguard:
         aliases:
-          - Arcadia-AWS-Small-Socket
+          - ${SOCKET_NETWORK_ALIAS:?missing SOCKET_NETWORK_ALIAS}
         ipv4_address: ${NETWORK_SUBNET:-10.13.13}.3
   wireguard:
     image: lscr.io/linuxserver/wireguard:latest
